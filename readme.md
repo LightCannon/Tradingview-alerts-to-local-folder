@@ -13,7 +13,7 @@
 
 ## Running the app
 
- 1. Double click the exe
+1. Double click main.exe
 2. Click on "Token" button, a pop up will request your auth token
 3. Paste the token from your ngrok dashboard![enter image description here](https://i.imgur.com/51gTiJS.png)![enter image description here](https://i.imgur.com/7vcVqri.png)
 5. Press Ok, now ngrok will automatically use this account to make the required tunnel.

@@ -6,6 +6,7 @@ from ui import Ui_MainWindow as ui
 from pyngrok import ngrok
 import os
 import dotenv
+import glob
 
 BASE = 'local'
 ROUTE = 'webhooks/csv'
@@ -19,7 +20,9 @@ class MainWindow(QMainWindow):
         self.ui.label_4.setText(webhook_url)
         self.setFixedWidth(657)
         self.setFixedHeight(430)
-
+        
+        self.base_id = 0
+        
         self.tunnel = ngrok_tunnel
         
         # Create the button for browsing to a folder
@@ -55,6 +58,7 @@ class MainWindow(QMainWindow):
         folder = QFileDialog.getExistingDirectory(self, "Select Folder", "", options=options)
         if folder:
             self.WEBOOK_FOLDER = folder
+            self.base_id = len(glob.glob1(folder,"*.csv"))
             print(self.WEBOOK_FOLDER)
             
     def copy_webhook(self):

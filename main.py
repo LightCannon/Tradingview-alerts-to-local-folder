@@ -35,11 +35,13 @@ class QuotesView(FlaskView):
             print("No content key in the notificaiton body")
             return "No content key in the notificaiton body"
 
-        path = os.path.join('.' if mainwin.WEBOOK_FOLDER is None else mainwin.WEBOOK_FOLDER, f'{content}.csv')
+        name = str(mainwin.base_id+1).zfill(9)
+        path = os.path.join('.' if mainwin.WEBOOK_FOLDER is None else mainwin.WEBOOK_FOLDER, f'{name}.csv')
         with open(path, 'w') as fcsv:
-            fcsv.write(' ')
+            fcsv.write(content)
             print(f"Added: {path}")
-            
+        
+        mainwin.base_id += 1
         return jsonify(message="OK"), 200
 
 class FlaskCore(QtCore.QObject):
